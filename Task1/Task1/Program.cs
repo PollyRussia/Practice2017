@@ -5,36 +5,27 @@ namespace Task1
 {
     class Program
     {
-        static long n, w, e;
         public static void Main(string[] args)
         {
-            StreamReader sr = new StreamReader("input.txt");
-            StreamWriter sw = new StreamWriter("output.txt");
-            string[] s = sr.ReadLine().Split();
-            n = long.Parse(s[0]);
-            w = long.Parse(s[1]);
-            e = long.Parse(s[2]);
-            long sum = 0;
-            for (long i = 1; i <= n; i++)
-                for (long j = 1; j <= n; j++)
+            decimal n, w, e;
+            string[] s = Console.ReadLine().Split();
+            n = decimal.Parse(s[0]);
+            w = decimal.Parse(s[1]);
+            e = decimal.Parse(s[2]);
+            decimal sum = 0;
+            for (decimal i = 1; i <= n; i++)
+                for (decimal j = 1; j <= n; j++)
                 {
-                    long x1 = 100 * i - 100, x2 = 100 * i, y1 = 100 * j - 100, y2 = 100 * j, y = Y(x1);
+                    decimal x1 = 100 * i - 100, x2 = 100 * i, y1 = 100 * j - 100, y2 = 100 * j, y = w + x1 * (e - w) / (100 * n); ;
                     if ((y - y1) * (y - y2) > 0)
                     {
-                        y = Y(x2);
+                        y = w + x2 * (e - w) / (100 * n);
                         if ((y - y1) * (y - y2) <= 0)
                             sum++;
                     }
                     else sum++;
                 }
-            sw.WriteLine(sum + "");
-            sr.Close();
-            sw.Close();
-        }
-
-        static long Y(long x)
-        {
-        return w  + x * (e - w) / (100 * n);
+            Console.WriteLine(sum + "");
         }
     }
 }
