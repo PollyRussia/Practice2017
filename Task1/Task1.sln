@@ -11,6 +11,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Task1 Python", "Task1 Pytho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task 4 - Long arithmetics", "Task 8 - Long arithmetics\Task 4 - Long arithmetics.csproj", "{BF986409-B6F8-442A-8B9B-222F43928487}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task 5", "Task 5\Task 5.csproj", "{83DD48DC-31DA-47EC-8D96-0386FE0AF630}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{BF986409-B6F8-442A-8B9B-222F43928487}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF986409-B6F8-442A-8B9B-222F43928487}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF986409-B6F8-442A-8B9B-222F43928487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83DD48DC-31DA-47EC-8D96-0386FE0AF630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83DD48DC-31DA-47EC-8D96-0386FE0AF630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83DD48DC-31DA-47EC-8D96-0386FE0AF630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83DD48DC-31DA-47EC-8D96-0386FE0AF630}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
