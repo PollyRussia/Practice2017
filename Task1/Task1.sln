@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task 4 - Long arithmetics",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task 5", "Task 5\Task 5.csproj", "{83DD48DC-31DA-47EC-8D96-0386FE0AF630}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task6", "Task6\Task6.csproj", "{5D2B5CFB-83FA-4710-A1CB-7E577EE0D90F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{83DD48DC-31DA-47EC-8D96-0386FE0AF630}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83DD48DC-31DA-47EC-8D96-0386FE0AF630}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83DD48DC-31DA-47EC-8D96-0386FE0AF630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D2B5CFB-83FA-4710-A1CB-7E577EE0D90F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D2B5CFB-83FA-4710-A1CB-7E577EE0D90F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D2B5CFB-83FA-4710-A1CB-7E577EE0D90F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D2B5CFB-83FA-4710-A1CB-7E577EE0D90F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
