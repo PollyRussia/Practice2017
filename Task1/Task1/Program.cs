@@ -6,8 +6,13 @@ namespace Task1
     {
         public static void Main(string[] args)
         {
-            decimal n, w, e;
+            /*В прямоугольной декартовой системе координат прямая задана двумя принадлежащими ей точками (0, W) и (100•N, E). 
+            Также заданы N2 квадратов со сторонами, параллельными осям координат. 
+            Квадрат Si,jимеет координаты углов (100•i, 100•j) и (100•i - 100, 100•j - 100), i, j = 1, 2, ..., N.
+            Требуется найти количество квадратов, имеющих общую точку с прямой.*/
+            decimal n, w, e; // входные данные
             string[] s = Console.ReadLine().Split();
+            //Console.WriteLine("Введите через пробел n w e");
             n = decimal.Parse(s[0]);
             w = decimal.Parse(s[1]);
             e = decimal.Parse(s[2]);
@@ -25,7 +30,9 @@ namespace Task1
                     }
                     else sum++;
                 }
-            Console.WriteLine(sum + "");
+            //Console.WriteLine("Количество квадратов, имеющих общую точку с прямой:");
+            Console.WriteLine(sum); // выходные данные
+            Console.ReadLine();
         }
     }
 }
