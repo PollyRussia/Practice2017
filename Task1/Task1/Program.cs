@@ -15,7 +15,8 @@ namespace Task1
             for (decimal i = 1; i <= n; i++)
                 for (decimal j = 1; j <= n; j++)
                 {
-                    decimal x1 = 100 * i - 100, x2 = 100 * i, y1 = 100 * j - 100, y2 = 100 * j, y = w + x1 * (e - w) / (100 * n); ;
+                    decimal x1 = 100 * i - 100, x2 = 100 * i, y1 = 100 * j - 100, 
+                        y2 = 100 * j, y = w + x1 * (e - w) / (100 * n);
                     if ((y - y1) * (y - y2) > 0)
                     {
                         y = w + x2 * (e - w) / (100 * n);
