@@ -8,21 +8,21 @@ namespace Task_10
 {
     class Program
     {
-        static Mas newarr = null; //возводимое число - 2^0, представление - длинная арифметика
+        static Mas newarr = null;
         static void Main(string[] args)
         {// читаем n
          // читаем все элементы и загружаем в динамический массив
          // сохраняем начало и конец массива
          // указываем двойное условие и идем с двух концов массива
             Console.WriteLine("Введите кол-во элементов (целое число)");
-            int n = Int32.Parse(Console.ReadLine());
+            int n = VVODN();
             Console.WriteLine("Введите 1 элемент (действительное число)");
-            newarr = new Mas(Double.Parse(Console.ReadLine()));
+            newarr = new Mas(VVOD());
             Mas head = newarr;
             for (int i = 2; i <= n; i++)
             {
                 Console.WriteLine("Введите " + i + " элемент (действительное число)");
-                newarr.next = new Mas(Double.Parse(Console.ReadLine()), newarr);
+                newarr.next = new Mas(VVOD(), newarr);
                 newarr = newarr.next;
             }
             Mas tail = newarr;
@@ -35,7 +35,38 @@ namespace Task_10
             }
             Console.Write("Результат, полученный по формуле (x1 + xn)(x2 + xn-1)...(xn + x1): " + sum);
             Console.ReadLine();
-
+        }
+        static double VVOD()
+        {
+            double value;
+            bool rightValue;
+            do
+            {
+                string inputValue = Console.ReadLine();
+                rightValue = double.TryParse(inputValue, out value);
+                if (!rightValue)
+                {
+                    Console.WriteLine("Неверное значение для дробного числа вида 0,0 , повторите.");
+                }
+            }
+            while (!rightValue);
+            return value;
+        }
+        static int VVODN()
+        {
+            int value;
+            bool rightValue;
+            do
+            {
+                string inputValue = Console.ReadLine();
+                rightValue = int.TryParse(inputValue, out value);
+                if (!rightValue || value < 1)
+                {
+                    Console.WriteLine("Неверное значение, ожидалось натуральное число. повторите.");
+                }
+            }
+            while (!rightValue || value < 1);
+            return value;
         }
     }
 }
