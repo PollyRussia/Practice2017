@@ -8,6 +8,7 @@ namespace Task_8___Long_arithmetics
         static Mas newarr = new Mas(1); //возводимое число - 2^0, представление - длинная арифметика
         static void Main(string[] args)
         {
+            Console.WriteLine("2 в 200 степени =");
             int degree = 200; // степень, в которую необходимо возвести 2
             for (int i = 1; i <= degree; i++)
                 Degree();
@@ -49,12 +50,12 @@ namespace Task_8___Long_arithmetics
     //    for (int i = 1; i <= degree; i++)
     //        Degree(ref arr);
     //    arr.Reverse();
-    //    foreach(int a in arr)
+    //    foreach (int a in arr)
     //        Console.Write(a);
     //    Console.ReadLine();
 
     //}
-    //static void Degree( ref List<int> arr) //функция удваивающая число
+    //static void Degree(ref List<int> arr) //функция удваивающая число
     //{
     //    int c = arr.Count, k = 0;
     //    for (int i = 0; i < c; i++)
