@@ -6,29 +6,36 @@ namespace Task_3
     {
         public static void Main(string[] args)
         {
-            double x = Double.Parse(input());
-            double y = Double.Parse(input());
+            Console.WriteLine("Введите значение x (ожидается действительное число)");
+            double x = VVOD();
+            Console.WriteLine("Введите значение y (ожидается действительное число)");
+            double y = VVOD();
+            Console.WriteLine("Данная точка принадлежит заштрихованной части плоскости?");
             if (IsPointInSquare(x, y))
-                print("YES");
+                Console.WriteLine("Да");
             else
-                print("NO");
-            input();
+                Console.WriteLine("Нет");
+            Console.ReadLine();
         }
         static bool IsPointInSquare(double x1, double y1)
         {
             return (Math.Abs(y1) <= -Math.Abs(x1) + 1);
         }
-        static void print(string s)
+        static double VVOD()
         {
-            Console.WriteLine(s);
-        }
-        static void p()
-        {
-            Console.WriteLine();
-        }
-        static string input()
-        {
-            return Console.ReadLine();
+            double value;
+            bool rightValue;
+            do
+            {
+                string inputValue = Console.ReadLine();
+                rightValue = double.TryParse(inputValue, out value);
+                if (!rightValue)
+                {
+                    Console.WriteLine("Неверное значение для дробного числа вида 0,0 , повторите.");
+                }
+            }
+            while (!rightValue);
+            return value;
         }
     }
 }
