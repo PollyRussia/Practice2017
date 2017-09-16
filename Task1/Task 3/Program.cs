@@ -6,6 +6,7 @@ namespace Task_3
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("Задание 3");
             Console.WriteLine("Введите значение x (ожидается действительное число)");
             double x = VVOD();
             Console.WriteLine("Введите значение y (ожидается действительное число)");

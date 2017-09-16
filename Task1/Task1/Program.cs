@@ -10,9 +10,10 @@ namespace Task1
             Также заданы N2 квадратов со сторонами, параллельными осям координат. 
             Квадрат Si,jимеет координаты углов (100•i, 100•j) и (100•i - 100, 100•j - 100), i, j = 1, 2, ..., N.
             Требуется найти количество квадратов, имеющих общую точку с прямой.*/
+            //Console.WriteLine("Задание 1");
+            //Console.WriteLine("Введите через пробел n w e");
             decimal n, w, e; // входные данные
             string[] s = Console.ReadLine().Split();
-            //Console.WriteLine("Введите через пробел n w e");
             n = decimal.Parse(s[0]);
             w = decimal.Parse(s[1]);
             e = decimal.Parse(s[2]);

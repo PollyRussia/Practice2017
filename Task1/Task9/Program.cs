@@ -9,6 +9,7 @@ namespace Task9
         //записанных в информационные поля элементов списка.
         public static void Main(string[] args)
         {
+            Console.WriteLine("Задание 9");
             Console.WriteLine("Введите кол-во элементов (целое число)");
             int n = VVODN();
             Console.WriteLine("Если вы хотите ввести элементы вручную, нажмите 1. В противном случае элементы будут сгенерированы автоматически.");
@@ -31,7 +32,8 @@ namespace Task9
                 Console.WriteLine("Сгенерированные элементы:");
                 for (int i = 0; i < Mas.kol; i++)
                 {
-                    Console.Write(a.elem  + " ");
+                    //Console.Write(a.elem  + " ");
+                    Console.Write("{0:0.00}  ", a.elem);
                     a = a.next;
                 }
             }
