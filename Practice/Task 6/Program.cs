@@ -1,14 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Task6
+namespace Task_6
 {
     class Program
     {
-
         static int M, N, m, n;
         public static void Main(string[] args)
         {
             Console.WriteLine("Задание 6");
+            //print("Введите а1 а2 а3 М, N через пробел (целые числа, М, N - натуральные)");
+            //string[] s = Console.ReadLine().Split(' ');
+            //M = Convert.ToInt32(s[3]); N = Convert.ToInt32(s[4]);
             M = VVODN("M"); N = VVODN("N");
             m = 0; n = 3;
             int a1 = VVOD("a1"), a2 = VVOD("a2"), a3 = VVOD("a3");
@@ -17,6 +23,7 @@ namespace Task6
             if (a1 % 3 == 0) m++;
             if (a2 % 3 == 0) m++;
             if (a3 % 3 == 0) m++;
+            //Rec(Convert.ToInt32(s[0]), Convert.ToInt32(s[1]), Convert.ToInt32(s[2]));
             if (n >= N)
                 print("Построены первые N элементов последовательности");
             if (m >= M)
@@ -84,4 +91,3 @@ namespace Task6
         }
     }
 }
-
