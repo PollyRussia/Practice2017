@@ -8,76 +8,119 @@ namespace Task_2
 {
     class Program
     {
-        static HashSet<Elem> compsub = new HashSet<Elem>();
+        static List<int> results = new List<int>();
+        static int[,] m;
         static void Main(string[] args)
         {
-            //string[] s = Console.ReadLine().Split();
-            HashSet<Elem> candidates = new HashSet<Elem>();
-            HashSet<Elem> wrong = new HashSet<Elem>();
             int n = int.Parse(Console.ReadLine());
-            for (int i = 1; i <= n; i++)
+            m = new int[n, n];
+            for (int i = 0; i < n; i++)
             {
-                HashSet<int> H = new HashSet<int>();
-                int j = 1;
+                int j = 0;
                 foreach (string s in Console.ReadLine().Split())
-                    if (s == "1") H.Add(j++);
-                candidates.Add(new Elem(i, H));
+                    m[i, j++] = int.Parse(s);
             }
-            Extend(candidates, wrong);
+            int[] N = new int [n];
+            for (int i = 0; i < n; i++)
+                m[i, i] = 0;
+            int group = 1;
+            while (M())
+            {
+                bron_kerbosh(m);
+                int try_please = 1;
+                foreach (int i in results)
+                {
+                    foreach (int j in results)
+                    {
+                        m[i, j] = 0;
+                        m[j, i] = 0;
+                            }
+                    N[i] = group;
+                    try_please++;
+                    if (try_please > 5) break;
+                }
+                    group++;
+            }
+            for (int i = 0; i < n; i++)
+                if (N[i] == 0) N[i] = group++;
+            Console.WriteLine(--group);
+            print(N.ToList<int>());
             Console.ReadLine();
 
         }
-        static void Extend (HashSet <Elem> candidates, HashSet <Elem> wrong)
+        static void bron_kerbosh(int [,] m)
+        {
+            results = new List<int>();
+            List<int> L = new List<int>();
+            for (int i = 0; i < m.GetLength(0); i++)
+                L.Add(i);
+            Extend(new List<int>(), L, new List<int>());
+        }
+        static void Extend (List<int>  compsub, List<int> candidates, List<int> wrong)
         {
             
-            while (candidates.Count != 0 && !Check(candidates, wrong))
+            while (candidates.Count != 0 && Check(candidates, wrong))
             {
-                foreach(Elem v in candidates)
+                int v = candidates[0];
+                compsub.Add(v);
+                List<int> new_candidates = new List<int>();
+                foreach (int i in candidates)
+                    if (m[i, v] == 1 && i != v) //
+                        new_candidates.Add(i);
+                List<int> new_wrong = new List<int>();
+                foreach (int i in wrong)
+                    if (m[i, v] == 1 && i != v) //
+                        new_wrong.Add(i);
+                if (new_candidates.Count == 0 && new_wrong.Count == 0)
                 {
-                    compsub.Add(v);
-                    HashSet<Elem> new_candidates = new HashSet<Elem>();
-                    HashSet<Elem> new_not = new HashSet<Elem>();
-                    foreach (Elem c in candidates)
-                        if (v.Spisok.Contains(c.V))
-                            new_candidates.Add(c);
-                    foreach (Elem c in wrong)
-                        if (v.Spisok.Contains(c.V))
-                            new_not.Add(c);
-                    if (new_candidates.Count == 0 && new_not.Count == 0)
-                        print(); // клика
-                    else
+                    //foreach (int i in compsub)
+                    //    results.Add(i);
+                    //print(compsub);
+                    if (compsub.Count > results.Count)
                     {
-                        Extend(new_candidates, new_not);
-                        compsub.Remove(v);
-                        candidates.Remove(v);
-                        wrong.Add(v);
+                        results = new List<int>();
+                        foreach (int i in compsub)
+                            results.Add(i);
                     }
                 }
+                else
+                    Extend(compsub, new_candidates, new_wrong);
+                candidates.Remove(v);
+                compsub.Remove(v);
+                wrong.Add(v);
 
             }
 
         }
-        static void print()
+        static void print(List<int> compsub)
         {
-            foreach (Elem a in compsub)
-                Console.Write(a.V + " ");
+            foreach (int a in compsub)
+                Console.Write(a + " ");
             Console.WriteLine();
         }
-        static bool Check(HashSet<Elem> candidates, HashSet<Elem> wrong)
+        static bool Check(List<int> candidates, List<int> wrong)
         {
             bool b = true;
-            foreach (Elem el in wrong)
+            foreach (int i in wrong)
             {
                 b = true;
-                foreach (Elem c in candidates)
-                    if (!el.Spisok.Contains(c.V))
+                foreach (int j in candidates)
+                    if (m[i, j] == 0) //
                     {
                         b = false;
                         break;
                     }
-                if (!b) break;
+                if (b) return false;
             }
-            return b;
+            return true;
+        }
+        static bool M()
+        {
+            foreach (int i in m)
+                if (i != 0) return true; //проверка напустоту (false - пусто)
+            return false;
         }
     }
 }
+
+
