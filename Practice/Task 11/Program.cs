@@ -10,17 +10,25 @@ namespace Task_11
     {
         static Dictionary<Char, string> From = new Dictionary<char, string> { };
         static Dictionary<string, Char> To = new Dictionary<string, Char> { };
+        static bool Check1 = true, Check2 = true;
         static void Main(string[] args)
         {
-            // НАПИСАТЬ ФИКСАЦИЮ ОШИБОК
+            Console.WriteLine("Задание 11");
             // Заполнение таблиц
             Tables();
             string word = "Полина";
+            Console.WriteLine("Пожалуйста, введите строку, которую необходимо зашифровать");
+            word = Console.ReadLine();
             // шифрование
             string answer = Encryption(word);
-            Console.WriteLine(word + " to " + answer);
+            Console.WriteLine("Шифрование:");
+            if (!Check1) Console.WriteLine("ВНИМАНИЕ! При шифровании были найдены символы, которых нет в таблице. Они будут зашифрованы как 0000");
+            Console.WriteLine(answer);
             // дешифрование
-            Console.WriteLine("Back: " + Decryption(answer));
+            Console.WriteLine("Дешифрование:");
+            if(!Check2) Console.WriteLine("ВНИМАНИЕ! При дешифровании были найдены шифры, которых нет в таблице. Они будут расшифрованы как §");
+            Console.WriteLine(Decryption(answer));
+            Console.ReadLine();
         }
         static void Tables() // Заполнение таблиц
         {
@@ -33,7 +41,7 @@ namespace Task_11
             foreach (var x in From)
                 To.Add(x.Value, x.Key);
         }
-        static string Decryption(string wordto) // шифрование
+        static string Decryption(string wordto) // дешифрование
         {
             string word = "";
             int size = 0; string subs = "";
@@ -42,18 +50,41 @@ namespace Task_11
                 size++; subs = subs + c;
                 if (size == 4)
                 {
-                    word = word + To[subs];
+                    if (To.ContainsKey(subs))
+                        word = word + To[subs];
+                    else // если код не найден
+                    {
+                        Check2 = false;
+                        word = word + "§";
+                    }
                     size = 0; subs = "";
                 }
             }
-            if (size != 0) word = word + To[subs]; // фиксацию багов сделать (когда символа нет)
+            if (size != 0)
+            {
+                if (To.ContainsKey(subs))
+                    word = word + To[subs];
+                else // если код не найден
+                {
+                    Check2 = false;
+                    word = word + "§";
+                }
+                    }
             return word;
         }
-        static string Encryption(string word) // дешифрование 
+        static string Encryption(string word) // шифрование 
         {
             string answer = "";
             foreach (Char s in word)
-                answer = answer + From[s]; // фиксацию багов сделать (когда символа нет)
+            {
+                if (From.ContainsKey(s))
+                answer = answer + From[s];
+                else // если символ не найден
+                {
+                    Check1 = false;
+                    answer = answer + "0000";
+                }
+            }
             return answer;
         }
     }

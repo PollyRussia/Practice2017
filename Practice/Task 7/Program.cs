@@ -12,24 +12,32 @@ namespace Task_7
         static List<string> s = new List<string>();
         public static void Main(string[] args)
         {
-            print("Введите кол-во элементов");
-            int n = inputInt(); // проверка на 0 и на отрицательные плюс проверка ввода
-            print("Поочередно введите все элементы в формате 0,0...");
+            Console.WriteLine("Задание 7");
+            Console.WriteLine("Введите кол-во элементов");
+            int n = VVODN(); // проверка на 0 и на отрицательные плюс проверка ввода
+            Console.WriteLine("Поочередно введите все элементы в формате 0,0...");
             for (int i = 0; i < n; i++)
-                l.Add(new Tree(inputD())); // читаем и сразу добавляем
+                l.Add(new Tree(VVOD(i))); // читаем и сразу добавляем
             while (l.Count > 1)
             {
-                Tree min1 = Min(), min2 = Min();
-                Tree elem = new Tree(min1.frequency + min2.frequency);
+                Tree min1 = Min(), min2 = Min(); // определяются две наименьшие частоты в списке и удаление элементов из списка
+                Tree elem = new Tree(min1.frequency + min2.frequency); // над наименьшими элементами надстраивается новый
                 elem.left = min1; elem.right = min2;
                 l.Add(elem);
             }
             Tree head = l[0];
-            MakeKey(ref head);
-            s.Sort();
-            Console.WriteLine();
-            foreach (string str in s)
-                Console.Write(str + " ");
+            if (head.frequency != 1)
+                Console.WriteLine("Программа вынуждена завершить работу в связи с тем, что сумма всех частот не равна 1");
+            else
+            {
+                MakeKey(ref head);
+                s.Sort();
+                Console.WriteLine();
+                Console.WriteLine("Полученные слова Хаффмана:");
+                foreach (string str in s)
+                    Console.Write(str + " ");
+            }
+            Console.ReadLine();
         }
         static Tree Min()
         {
@@ -59,35 +67,39 @@ namespace Task_7
                     s.Add(x.key);
             }
         }
-        static void PrintTree(Tree x) // дополнительная функция проверки дерева
+       
+        static double VVOD(int k)
         {
-            if (x != null)
+            double value;
+            bool rightValue;
+            Console.WriteLine("Введите частоту элемента " + (k + 1));
+            do
             {
-                Console.Write(" " + x.frequency);
-                if (x.left == null && x.right == null)
-                    Console.Write("*");
-                else
+                string inputValue = Console.ReadLine();
+                rightValue = double.TryParse(inputValue, out value);
+                if (!rightValue)
                 {
-                    PrintTree(x.left);
-                    PrintTree(x.right);
+                    Console.WriteLine("Неверное значение для дробного числа вида 0,0 , повторите.");
                 }
             }
+            while (!rightValue);
+            return value;
         }
-        static void print(string a)
+        static int VVODN()
         {
-            Console.WriteLine();
-            Console.WriteLine(a);
-        }
-        static double inputD()
-        {
-            //string s = Console.ReadLine(); //Нужна проверка ввода
-            return Convert.ToDouble(Console.ReadLine());
-        }
-        static int inputInt()
-        {
-            //string s = Console.ReadLine(); 
-            //int k = Convert.ToInt32(Console.ReadLine());//Нужна проверка ввода
-            return Convert.ToInt32(Console.ReadLine()); // вспомнить, как ловить исключения, в общем
+            int value;
+            bool rightValue;
+            do
+            {
+                string inputValue = Console.ReadLine();
+                rightValue = int.TryParse(inputValue, out value);
+                if (!rightValue || value < 1)
+                {
+                    Console.WriteLine("Неверное значение, ожидалось натуральное число. повторите.");
+                }
+            }
+            while (!rightValue || value < 1);
+            return value;
         }
     }
 }
